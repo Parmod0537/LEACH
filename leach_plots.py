@@ -3,11 +3,13 @@
 
 '''
 
-import random
 import math
+import random
+
 from matplotlib import pyplot as plt
+
 # Constants
-NUM_NODES = 20
+NUM_NODES = 100
 FIELD_SIZE = 100
 P = 0.1  # Probability of becoming a cluster head
 MAX_ROUNDS = 10
@@ -58,7 +60,7 @@ def leach(G, p, max_rounds, nodes):
                     # Assign the current node to the nearest cluster head's cluster
                     clusters[nearest_ch_index].append(node)
                     
-        print(f"Value in Cluster Variable : {clusters}")      
+        print(f"Value in Cluster Variable : {clusters}")
         
         plt.figure(figsize=(10,10))
         plt.xlim(0, FIELD_SIZE)
@@ -73,20 +75,20 @@ def leach(G, p, max_rounds, nodes):
         # Step 3: Data Transmission (Simplified)
         for ch_index, members in clusters.items():
             cluster_head = cluster_heads[ch_index]
-            # Assign Cluster heads coordinate to ch 
+            # Assign Cluster heads coordinate to ch
             
             print(f"Cluster Head {ch_index+1}: {cluster_head}")
             print(f"Number of Members in this cluster: {len(members)}")
             for member in members:
                 plt.plot([cluster_head[0], member[0]], [cluster_head[1], member[1]], 'k--')
                 print(f"  Node: {member} -> Cluster Head: {cluster_head}")
-            # Simulate data aggregation and transmission to base station
+            # Simulate data aggregation and transmission to base stations
             print(f"Cluster Head {cluster_head} transmits aggregated data to the base station.")
         print(f"Cluster Heads in Round {round} are : {len(cluster_heads)}")
         print("")
 
         plt.scatter(*zip(*cluster_heads), c='red', label='Cluster Heads')
-        plt.legend()
+        plt.legend(bbox_to_anchor=(0.8,1.1) , loc='upper left')
         plt.grid(True)
         plt.savefig(f'Leach Results/leach_round_{round}.png')
         plt.close()
