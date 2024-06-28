@@ -1,12 +1,8 @@
-'''
-    This is the LEACH based setup base for clustering of Wireless Sensor Networks
-
-'''
+# This is the LEACH based setup base for clustering of Wireless Sensor Networks
 
 import math
 import random
-
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 
 # Constants
 NUM_NODES = 100
